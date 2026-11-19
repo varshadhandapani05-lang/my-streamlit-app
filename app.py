@@ -67,44 +67,7 @@ div.stButton > button:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(10, 196, 224, 0.25);
 }
-/* Force all application text to black */
-.stApp,
-.stApp p,
-.stApp span,
-.stApp label,
-.stApp div,
-.stApp h1,
-.stApp h2,
-.stApp h3,
-.stApp h4,
-.stMarkdown,
-.stMarkdown p,
-.stMarkdown span,
-.stMarkdown label,
-.stTextInput label,
-.stSelectbox label,
-.stFileUploader label {
-    color: #000000 !important;
-}
 
-/* Input text */
-.stTextInput input,
-.stTextArea textarea,
-.stSelectbox div[data-baseweb="select"] {
-    color: #000000 !important;
-}
-
-/* Login card text */
-.login-card,
-.login-card * {
-    color: #000000 !important;
-}
-
-/* Keep button text white */
-div.stButton > button,
-div.stButton > button * {
-    color: #FFFFFF !important;
-}
 </style>
 """, unsafe_allow_html=True)
 # ---------------- LOGIN PAGE ----------------
