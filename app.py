@@ -21,6 +21,37 @@ st.set_page_config(
     page_icon="👁️",
     layout="wide"
 )
+st.markdown("""
+<style>
+
+/* Metric labels */
+[data-testid="stMetricLabel"] {
+    color: #000000 !important;
+    font-weight: 700 !important;
+}
+
+/* Metric values */
+[data-testid="stMetricValue"] {
+    color: #000000 !important;
+    font-weight: 800 !important;
+}
+
+/* Metric descriptions and delta */
+[data-testid="stMetricDelta"] {
+    color: #333333 !important;
+}
+
+/* General text */
+.stMarkdown,
+.stMarkdown p,
+.stMarkdown h1,
+.stMarkdown h2,
+.stMarkdown h3 {
+    color: #000000 !important;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 # ---------------- LOGIN CREDENTIALS ----------------
 USERNAME = "admin"
