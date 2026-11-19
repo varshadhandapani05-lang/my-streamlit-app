@@ -1,5 +1,6 @@
 from pathlib import Path
 from datetime import datetime
+from huggingface_hub import snapshot_download
 
 import cv2
 import numpy as np
@@ -110,7 +111,22 @@ if not st.session_state.logged_in:
 # CONFIGURATION
 # ==========================================================
 ROOT = Path(__file__).parent
-DATASET = ROOT / "Dataset"
+
+@st.cache_resource
+def download_dataset():
+
+    dataset_path = snapshot_download(
+        repo_id="varshhsri/mgd1k-meibovision-data",
+        repo_type="dataset",
+        token=st.secrets["HF_TOKEN"],
+        local_dir=str(ROOT / "Dataset")
+    )
+
+    return Path(dataset_path)
+
+
+DATASET = download_dataset()
+
 IMAGE_DIR = DATASET / "Original Images"
 GLAND_MASK_DIR = DATASET / "Meibomian Gland Labels"
 EYELID_MASK_DIR = DATASET / "Eyelid Lebels"
