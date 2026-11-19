@@ -382,6 +382,42 @@ div.stDownloadButton > button:hover {
     color: white !important;
     border-color: #159ba4 !important;
 }
+/* Select Dataset dropdown */
+div[data-testid="stSelectbox"] > div > div {
+    background-color: #ffffff !important;
+    color: #17365d !important;
+    border: 1px solid #dfe7f0 !important;
+    border-radius: 8px !important;
+}
+
+/* Dropdown selected text */
+div[data-testid="stSelectbox"] input {
+    color: #17365d !important;
+    background-color: #ffffff !important;
+}
+
+/* Navigation radio button area */
+section[data-testid="stSidebar"] div[data-testid="stRadio"] {
+    background-color: #ffffff !important;
+    padding: 12px !important;
+    border-radius: 10px !important;
+    border: 1px solid #dfe7f0 !important;
+}
+
+/* Navigation radio labels */
+section[data-testid="stSidebar"] div[data-testid="stRadio"] label {
+    color: #17365d !important;
+    background-color: #ffffff !important;
+}
+
+/* Radio button text */
+section[data-testid="stSidebar"] div[data-testid="stRadio"] label p {
+    color: #17365d !important;
+}
+
+
+
+Expected appearance
 </style>
 """, unsafe_allow_html=True)
 
@@ -835,7 +871,7 @@ else:
 
         if eyelid_mask is None or not np.any(eyelid_mask):
             st.warning("A matching, non-empty eyelid mask is required to calculate gland density and gland area percentage.")
-        st.caption("Area is reported in image pixels (px²). Physical mm² requires verified pixel calibration. Gland count is an estimate, not a validated anatomical count.")
+      
         # ---------------- DEMO MODEL PERFORMANCE ----------------
         st.subheader("Model Performance")
 
