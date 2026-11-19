@@ -415,6 +415,34 @@ section[data-testid="stSidebar"] div[data-testid="stRadio"] label p {
     color: #17365d !important;
 }
 
+/* Regional Analysis section background */
+div[data-testid="stDataFrame"],
+div[data-testid="stTable"] {
+    background-color: #ffffff !important;
+}
+
+/* Regional Area and Density containers */
+.metric-card,
+.panel {
+    background-color: #ffffff !important;
+}
+
+/* Regional analysis dataframe */
+div[data-testid="stDataFrame"] > div {
+    background-color: #ffffff !important;
+}
+
+/* Regional analysis text */
+div[data-testid="stDataFrame"] * {
+    color: #17365d !important;
+}
+
+/* Regional section headings */
+.section-title {
+    color: #17365d !important;
+}
+
+
 
 
 Expected appearance
