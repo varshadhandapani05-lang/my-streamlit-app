@@ -173,8 +173,8 @@ align-items:center; justify-content:center; font-weight:800; margin-bottom:7px;}
 .step-label {font-weight:800; font-size:.84rem; color:#17365d;}
 .step-desc {font-size:.75rem; color:#687b95; line-height:1.25;}
 .metric-card {background:white; border:1px solid #dfe7f0; border-radius:12px; padding:18px 16px; min-height:122px;}
-.metric-label {font-size:.85rem; font-weight:700; color:#17365d;}
-.metric-value {font-size:1.8rem; font-weight:800; color:#17365d; margin-top:8px;}
+.metric-label {font-size:.85rem; font-weight:700; color: #000000;}
+.metric-value {font-size:1.8rem; font-weight:800; color: #000000; margin-top:8px;}
 .metric-note {font-size:.75rem; color:#75869a; margin-top:3px;}
 .grade-box {background:#fff7e6; border:1px solid #f4e6be; border-radius:10px; padding:18px; text-align:center;}
 .grade-value {font-size:1.8rem; font-weight:800; color:#17365d;}
