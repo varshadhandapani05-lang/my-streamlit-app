@@ -184,62 +184,207 @@ segmentation_file = ROOT / "segmentation_metrics.json"
 # ==========================================================
 # CSS - dashboard styling inspired by the reference screenshot
 # ==========================================================
+
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-html, body, [class*="css"] { font-family: Inter, sans-serif; }
-.stApp { background: #f5f8fc; color: #102c55; }
-.block-container { padding-top: 1rem; padding-bottom: 2rem; max-width: 1600px; }
-header[data-testid="stHeader"] { background: rgba(245,248,252,.95); }
-section[data-testid="stSidebar"] { background: #f8fbff; border-right: 1px solid #dce5ef; }
-section[data-testid="stSidebar"] * { color: #17365d; }
-.brand {font-size: 1.55rem; font-weight: 800; color:#12325c; letter-spacing:-.5px;}
-.brand span {color:#149da5;}
-.subtitle {color:#687b95; font-size:.95rem; margin-top:-8px;}.section-title {font-size:1.08rem; font-weight:800; color:#12325c; margin:0 0 .8rem 0;}
-.panel {background:white; border:1px solid #dfe7f0; border-radius:12px; padding:16px; margin-bottom:12px;}
-.step-row {display:flex; align-items:center; justify-content:space-between; gap:8px; background:white;
-border:1px solid #dfe7f0; border-radius:12px; padding:17px 12px; height:100%;}
-.step-num {background:#169fa7; color:white; border-radius:50%; width:34px; height:34px; display:inline-flex;
-align-items:center; justify-content:center; font-weight:800; margin-bottom:7px;}
-.step-label {font-weight:800; font-size:.84rem; color:#17365d;}
-.step-desc {font-size:.75rem; color:#687b95; line-height:1.25;}
-.metric-card {background:white; border:1px solid #dfe7f0; border-radius:12px; padding:18px 16px; min-height:122px;}
-.metric-label {font-size:.85rem; font-weight:700; color: black;}
-.metric-value {font-size:1.8rem; font-weight:800; color: black; margin-top:8px;}
-.metric-note {font-size:.75rem; color:black; margin-top:3px;}
-.grade-box {background:#fff7e6; border:1px solid #f4e6be; border-radius:10px; padding:18px; text-align:center;}
-.grade-value {font-size:1.8rem; font-weight:800; color:#17365d;}
-.grade-caption {font-size:.85rem; color:#687b95;}
-div.stButton > button, div.stDownloadButton > button {border-radius:8px; font-weight:700; min-height:2.6rem;}
-div.stButton > button[kind="primary"] {background:#159ba4; border-color:#159ba4;}
-div.stButton > button[kind="primary"]:hover {background:#117e87; border-color:#117e87;}
-div[data-testid="stMetric"] {background:white;color:black; border:1px solid #dfe7f0; padding:14px; border-radius:10px;}
-.small-muted {font-size:.78rem;color:#75869a;}div.stDownloadButton > button:hover {
+
+html, body, [class*="css"] {
+    font-family: Inter, sans-serif;
+}
+
+.stApp {
+    background: #f5f8fc;
+    color: #102c55;
+}
+
+.block-container {
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    max-width: 1600px;
+}
+
+header[data-testid="stHeader"] {
+    background: rgba(245,248,252,.95);
+}
+
+section[data-testid="stSidebar"] {
+    background: #f8fbff;
+    border-right: 1px solid #dce5ef;
+}
+
+section[data-testid="stSidebar"] * {
+    color: #17365d;
+}
+
+.brand {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #12325c;
+    letter-spacing: -.5px;
+}
+
+.brand span {
+    color: #149da5;
+}
+
+.subtitle {
+    color: #687b95;
+    font-size: .95rem;
+    margin-top: -8px;
+}
+
+.section-title {
+    font-size: 1.08rem;
+    font-weight: 800;
+    color: #12325c;
+    margin: 0 0 .8rem 0;
+}
+
+.panel {
+    background: white;
+    border: 1px solid #dfe7f0;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+}
+
+.step-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: white;
+    border: 1px solid #dfe7f0;
+    border-radius: 12px;
+    padding: 17px 12px;
+    height: 100%;
+}
+
+.step-num {
+    background: #169fa7;
+    color: white;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin-bottom: 7px;
+}
+
+.step-label {
+    font-weight: 800;
+    font-size: .84rem;
+    color: #17365d;
+}
+
+.step-desc {
+    font-size: .75rem;
+    color: #687b95;
+    line-height: 1.25;
+}
+
+.metric-card {
+    background: white;
+    border: 1px solid #dfe7f0;
+    border-radius: 12px;
+    padding: 18px 16px;
+    min-height: 122px;
+}
+
+.metric-label,
+.metric-value,
+.metric-note {
+    color: #000000 !important;
+}
+
+.metric-label {
+    font-size: .85rem;
+    font-weight: 700;
+}
+
+.metric-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-top: 8px;
+}
+
+.metric-note {
+    font-size: .75rem;
+    margin-top: 3px;
+}
+
+/* FIX: Streamlit metric text */
+div[data-testid="stMetric"] {
+    background: white !important;
+    color: #000000 !important;
+    border: 1px solid #dfe7f0;
+    padding: 14px;
+    border-radius: 10px;
+}
+
+div[data-testid="stMetric"] label,
+div[data-testid="stMetric"] label *,
+div[data-testid="stMetricLabel"],
+div[data-testid="stMetricLabel"] *,
+div[data-testid="stMetricValue"],
+div[data-testid="stMetricValue"] *,
+div[data-testid="stMetricDelta"] {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+.grade-box {
+    background: #fff7e6;
+    border: 1px solid #f4e6be;
+    border-radius: 10px;
+    padding: 18px;
+    text-align: center;
+}
+
+.grade-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #17365d;
+}
+
+.grade-caption {
+    font-size: .85rem;
+    color: #687b95;
+}
+
+div.stButton > button,
+div.stDownloadButton > button {
+    border-radius: 8px;
+    font-weight: 700;
+    min-height: 2.6rem;
+}
+
+div.stButton > button[kind="primary"] {
+    background: #159ba4;
+    border-color: #159ba4;
+}
+
+div.stButton > button[kind="primary"]:hover {
+    background: #117e87;
+    border-color: #117e87;
+}
+
+.small-muted {
+    font-size: .78rem;
+    color: #75869a;
+}
+
+div.stDownloadButton > button:hover {
     background-color: #159ba4 !important;
     color: white !important;
     border-color: #159ba4 !important;
-}<div style="padding: 10px 0;">
-    <h1 style="
-        margin: 0;
-        font-size: 30px;
-        font-weight: 700;
-        color: #183153;
-        opacity: 1;
-    ">
-        <span style="color: #0D9488;">MeiboVision</span>
-        <span style="color: #183153;"> | Meibomian Gland Analysis</span>
-    </h1>
-    <p style="
-        margin-top: 8px;
-        font-size: 16px;
-        color: #183153;
-        opacity: 1;
-    ">
-        Deep learning-assisted meibography review dashboard
-    </p>
-</div>
+}
 </style>
 """, unsafe_allow_html=True)
+
 
 # ==========================================================
 # MODEL LOADING
